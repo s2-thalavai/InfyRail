@@ -1,0 +1,337 @@
+{
+  "info": {
+    "name": "InfyRail",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. Create route",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/routes",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "routes"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"source\": \"Chennai\",\n  \"destination\": \"Coimbatore\",\n  \"trainList\": [\n    {\n      \"trainName\": \"Kovai Express\",\n      \"arrivalTime\": \"06:00:00\",\n      \"departureTime\": \"06:10:00\",\n      \"fare\": 650.5\n    }\n  ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "2. View route 101",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/routes/101",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "routes",
+            "101"
+          ]
+        }
+      }
+    },
+    {
+      "name": "3. Trains Bangalore->Chennai",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/routes/trains?source=Bangalore&destination=Chennai",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "routes",
+            "trains"
+          ],
+          "query": [
+            {
+              "key": "source",
+              "value": "Bangalore"
+            },
+            {
+              "key": "destination",
+              "value": "Chennai"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "4. Update route (matrix)",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/routes/102;source=Pune;destination=Mysuru",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "routes",
+            "102;source=Pune;destination=Mysuru"
+          ]
+        }
+      }
+    },
+    {
+      "name": "5. Delete train from route",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/routes/101/16021",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "routes",
+            "101",
+            "16021"
+          ]
+        }
+      }
+    },
+    {
+      "name": "6a. Update train in route",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/routes/101",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "routes",
+            "101"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id\": 12608,\n  \"trainName\": \"Lalbagh SF Express\",\n  \"arrivalTime\": \"18:30:00\",\n  \"departureTime\": \"18:45:00\",\n  \"fare\": 999.99\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "6b. Add new train to route",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/routes/103",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "routes",
+            "103"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"trainName\": \"Shatabdi Express\",\n  \"arrivalTime\": \"06:00:00\",\n  \"departureTime\": \"06:05:00\",\n  \"fare\": 1250.0\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "7. Create train",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/trains",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "trains"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"trainName\": \"Shatabdi Express\",\n  \"arrivalTime\": \"06:00:00\",\n  \"departureTime\": \"06:05:00\",\n  \"fare\": 1250.0\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "8. Update fare",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/trains/12608",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "trains",
+            "12608"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "1050.75",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "ERR invalid route id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/routes/99",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "routes",
+            "99"
+          ]
+        }
+      }
+    },
+    {
+      "name": "ERR route not found",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/routes/555",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "routes",
+            "555"
+          ]
+        }
+      }
+    },
+    {
+      "name": "ERR invalid source",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/routes/trains?source=Bang1&destination=Chennai",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "routes",
+            "trains"
+          ],
+          "query": [
+            {
+              "key": "source",
+              "value": "Bang1"
+            },
+            {
+              "key": "destination",
+              "value": "Chennai"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "ERR invalid route DTO",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/routes",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "routes"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"source\": \"\",\n  \"destination\": \"Goa1\",\n  \"trainList\": []\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8765/InfyRail"
+    }
+  ]
+}
